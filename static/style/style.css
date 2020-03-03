@@ -1,0 +1,105 @@
+html,
+body {
+    height: 100%;
+    background-color: rgb(237, 241, 245);
+}
+
+#begining {
+    position: absolute;
+    top: 130%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: orange;
+    border-color: orange;
+}
+
+#start {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#calculate {
+    border-radius: 3px;
+}
+
+#predict {
+    background-color: orange;
+    border-color: orange;
+}
+
+.navbar {
+    background-color: orange;
+}
+
+.entry {
+    text-align: center;
+}
+
+.entry2 {
+    text-align: center;
+}
+
+.entry3 {
+    text-align: center;
+}
+
+#search {
+    /* position: absolute;
+    align-items: center;
+    top: -300px; */
+    border-radius: 20px;
+    box-shadow: 10px;
+    /* text-align: center;
+    display: inline-block; */
+}
+
+#movies {
+    background-color: orange;
+    border-color: orange;
+}
+
+.dashboard {
+    /* width: 200px; */
+    /* height: 100px; */
+    /* padding: 0px; */
+    background-color: white;
+    border-radius: 9px;
+    box-shadow: 3px 3px 3px #888888;
+    /* margin: 10px; */
+    /* position: relative; */
+    /* top: 100%;
+    left: 0%;
+    transform: translate(-10%, 200%); */
+}
+
+.jumbotron {
+    background: url("images/background.jpg") fixed center no-repeat;
+    background-size: cover;
+}
+
+#hola {
+    box-shadow: 10px;
+}
+
+.node {
+    cursor: pointer;
+}
+
+.node circle {
+    fill: #fff;
+    stroke: rgb(236, 104, 16);
+    stroke-width: 3px;
+}
+
+.node text {
+    font: 12px sans-serif;
+}
+
+.link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 2px;
+}
