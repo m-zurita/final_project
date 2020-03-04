@@ -220,9 +220,13 @@ function createGraph(itemString, peliculas) {
 //*************************************************************************************************
 //The listener to search Movies, Actor or Directors
 
+d3.csv('../Resources/movies.csv', function(complete) {
+    console.log(complete)
+})
+
 var pelis = ["The Pianist", "Adrien Brody", "Leonardo DiCaprio", "Inception"];
-var actores = ["Nicolas Cage", "Angie", "Jorge", "Mioguel"];
-var directores = ["Roman Polanski", "Lolita"];
+var actores = ["Nicolas Cage", "Nick Nolte", "Jason Statham", "Niel patrick Harris"];
+var directores = ["Roman Polanski"];
 
 function autocomplete(inp, arr) {
     /*the autocomplete function takes two arguments,

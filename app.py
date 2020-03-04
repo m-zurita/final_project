@@ -1,16 +1,23 @@
 from flask import Flask, render_template,jsonify
 import json
 from sqlalchemy import create_engine
-import psycopg2 
+import psycopg2
+import pandas as pd
+import numpy as np
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 
 engine = create_engine('postgresql://postgres:1234@localhost:5432/peliculas_db')
 
-pelis = ["The Pianist", "Adrien Brody", "Leonardo DiCaprio", "Inception"]
-actores = ["Nicolas Cage", "Angie", "Jorge", "Jason Statham"]
-directores = ["Roman Polanski", "Lolita"]
+data = pd.read_csv("Resources/movies.csv")
+pelis = np.asarray(data['Title'])
+actores = np.asarray(data['Actors'])
+directores = np.asarray(data['Director'])
+
+#pelis = ["The Pianist", "Inception", "Boyhood"]
+#actores = ["Nicolas Cage", "Nick Nolte", "Jason Statham", "Niel patrick Harris"]
+#directores = ["Roman Polanski", "Quentin Tarantino"]
 
 @app.route("/")
 def home():
