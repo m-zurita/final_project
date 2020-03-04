@@ -220,9 +220,9 @@ function createGraph(itemString, peliculas) {
 //*************************************************************************************************
 //The listener to search Movies, Actor or Directors
 
-var pelis = ["The Pianist", "Adrien Brody", "Leonardo DiCaprio", "Inception", "Roman Polansky"];
-var actores = ["Leonardo", "Angie", "Jorge", "Mioguel"];
-var directores = ["Juanita", "Lolita"];
+var pelis = ["The Pianist", "Adrien Brody", "Leonardo DiCaprio", "Inception"];
+var actores = ["Nicolas Cage", "Angie", "Jorge", "Mioguel"];
+var directores = ["Roman Polanski", "Lolita"];
 
 function autocomplete(inp, arr) {
     /*the autocomplete function takes two arguments,

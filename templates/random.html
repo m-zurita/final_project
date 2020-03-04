@@ -7,41 +7,41 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Random</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="/static/style/style.css>
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/style/style.css') }}">
     <link rel=" stylesheet " href="images/background.jpg ">
 </head>
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-white ">
-            <div class="container " id="hola ">
-                <a class="navbar-brand " href="index.html " id="titulo ">Movie World</a>
-                <button class="navbar-toggler " type="button " data-toggle="collapse " data-target="#navbarSupportedContent " aria-controls="navbarSupportedContent " aria-expanded="false " aria-label="Toggle navigation ">
-                             <span class="navbar-toggler-icon "></span>
-                        </button>
-                <div class="collapse navbar-collapse " id="navbarSupportedContent ">
-                    <ul class="navbar-nav ml-auto ">
-                        <li class="nav-item dropdown ">
-                            <a class="nav-link toggle " href="dashboard.html " id="navbar-toggler " role="button ">
-                                        Dashboard
+        <nav class="navbar navbar-expand-lg navbar-light bg-white">
+            <div class="container" id="hola">
+                <a class="navbar-brand" href="{{ url_for('home') }}" id="titulo">Movie World</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                     <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link toggle" href="{{ url_for('dash') }}" id="navbar-toggler" role="button">
+                                Dashboard
                             </a>
                             <!-- Here's the magic. Add the .animate and .slide-in classes to your .dropdown-menu and you're all set! -->
-                            <!-- <div class="dropdown-menu dropdown-menu-right animate slideIn " aria-labelledby="navbarDropdown ">
-                                        <a class="dropdown-item " href="max_temp.html ">Max Temperature</a>
-                                        <a class="dropdown-item " href="humidity.html ">Humidity</a>
-                                        <a class="dropdown-item " href="cloudiness.html ">Cloudiness</a>
-                                        <a class="dropdown-item " href="wind.html ">Windspeed</a>
-                                        <!--<div class="dropdown-divider "></div>-->
+                            <!-- <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="max_temp.html">Max Temperature</a>
+                                <a class="dropdown-item" href="humidity.html">Humidity</a>
+                                <a class="dropdown-item" href="cloudiness.html">Cloudiness</a>
+                                <a class="dropdown-item" href="wind.html">Windspeed</a>
+                                <!--<div class="dropdown-divider"></div>-->
                             <!--</div> -->
                         </li>
-                        <li class="nav-item dropdown ">
-                            <a class="nav-link toggle " href="mcalculator.html " id="navbar-toggler " role="button ">
-                                        Movie Calculator
+                        <li class="nav-item dropdown">
+                            <a class="nav-link toggle" href="{{ url_for('calcu') }}" id="navbar-toggler" role="button">
+                                Movie Calculator
                             </a>
                         </li>
-                        <li class="nav-item dropdown ">
-                            <a class="nav-link toggle " href="random.html " id="navbar-toggler " role="button ">
-                                        Movie Random List
+                        <li class="nav-item dropdown">
+                            <a class="nav-link toggle" href="{{ url_for('random') }}" id="navbar-toggler" role="button">
+                                Movie Random List
                             </a>
                         </li>
                     </ul>
@@ -51,39 +51,39 @@
 
     </header>
 
-    <div class="container ">
-        <div class="row justify-content-center ">
-            <div class="col-4 ">
-                <div class="dropdown m-4 text-center ">
-                    <button class="btn btn-secondary btn-lg dropdown-toggle " type="button " id="movies " href="# " data-toggle="dropdown " aria-haspopup="true " aria-expanded="false ">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <div class="dropdown m-4 text-center">
+                    <button class="btn btn-secondary btn-lg dropdown-toggle" type="button " id="movies" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Select Movie Genre
                     </button>
-                    <div class="dropdown-menu ">
-                        <a class="dropdown-item " href="# ">Drama</a>
-                        <a class="dropdown-item " href="# ">Action</a>
-                        <a class="dropdown-item " href="# ">Adventure</a>
-                        <a class="dropdown-item " href="# ">Comedy</a>
-                        <a class="dropdown-item " href="# ">Animation</a>
-                        <a class="dropdown-item " href="# ">Horror</a>
-                        <a class="dropdown-item " href="# ">Musical</a>
-                        <a class="dropdown-item " href="# ">Biography</a>
-                        <a class="dropdown-item " href="# ">Crime</a>
-                        <a class="dropdown-item " href="# ">Mystery</a>
-                        <a class="dropdown-item " href="# ">Family</a>
-                        <a class="dropdown-item " href="# ">Fantasy</a>
-                        <a class="dropdown-item " href="# ">Documentary</a>
-                        <a class="dropdown-item " href="# ">Romance</a>
-                        <a class="dropdown-item " href="# ">Sci-Fi</a>
-                        <a class="dropdown-item " href="# ">Thriller</a>
-                        <a class="dropdown-item " href="# ">Western</a>
-                        <a class="dropdown-item " href="# ">Short</a>
-                        <a class="dropdown-item " href="# ">Music</a>
-                        <a class="dropdown-item " href="# ">Reality-TV</a>
-                        <a class="dropdown-item " href="# ">War</a>
-                        <a class="dropdown-item " href="# ">History</a>
-                        <a class="dropdown-item " href="# ">Sport</a>
-                        <a class="dropdown-item " href="# ">Talk-Show</a>
-                        <a class="dropdown-item " href="# ">Game-Show</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Drama</a>
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Adventure</a>
+                        <a class="dropdown-item" href="#">Comedy</a>
+                        <a class="dropdown-item" href="#">Animation</a>
+                        <a class="dropdown-item" href="#">Horror</a>
+                        <a class="dropdown-item" href="#">Musical</a>
+                        <a class="dropdown-item" href="#">Biography</a>
+                        <a class="dropdown-item" href="#">Crime</a>
+                        <a class="dropdown-item" href="#">Mystery</a>
+                        <a class="dropdown-item" href="#">Family</a>
+                        <a class="dropdown-item" href="#">Fantasy</a>
+                        <a class="dropdown-item" href="#">Documentary</a>
+                        <a class="dropdown-item" href="#">Romance</a>
+                        <a class="dropdown-item" href="#">Sci-Fi</a>
+                        <a class="dropdown-item" href="#">Thriller</a>
+                        <a class="dropdown-item" href="#">Western</a>
+                        <a class="dropdown-item" href="#">Short</a>
+                        <a class="dropdown-item" href="#">Music</a>
+                        <a class="dropdown-item" href="#">Reality-TV</a>
+                        <a class="dropdown-item" href="#">War</a>
+                        <a class="dropdown-item" href="#">History</a>
+                        <a class="dropdown-item" href="#">Sport</a>
+                        <a class="dropdown-item" href="#">Talk-Show</a>
+                        <a class="dropdown-item" href="#">Game-Show</a>
                     </div>
                 </div>
             </div>
@@ -97,6 +97,7 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js " integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN " crossorigin="anonymous "></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js " integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q " crossorigin="anonymous "></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js " integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl " crossorigin="anonymous "></script>
-<script src="/static/js/logic.js "></script>
+<script src="https://d3js.org/d3.v5.min.js "></script>
+<script src="../static/js/logic.js "></script>
 
 </html>

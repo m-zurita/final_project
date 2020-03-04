@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Movie Consultant</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="/static/style/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/style/style.css') }}">
     <link rel="stylesheet" href="images/background.jpg">
 </head>
 
@@ -15,14 +15,14 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-white">
             <div class="container" id="hola">
-                <a class="navbar-brand" href="index.html" id="titulo">Movie World</a>
+                <a class="navbar-brand" href="{{ url_for('home') }}" id="titulo">Movie World</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                      <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown">
-                            <a class="nav-link toggle" href="dashboard.html" id="navbar-toggler" role="button">
+                            <a class="nav-link toggle" href="{{ url_for('dash') }}" id="navbar-toggler" role="button">
                                 Dashboard
                             </a>
                             <!-- Here's the magic. Add the .animate and .slide-in classes to your .dropdown-menu and you're all set! -->
@@ -35,12 +35,12 @@
                             <!--</div> -->
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link toggle" href="mcalculator.html" id="navbar-toggler" role="button">
+                            <a class="nav-link toggle" href="{{ url_for('calcu') }}" id="navbar-toggler" role="button">
                                 Movie Calculator
                             </a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link toggle" href="random.html" id="navbar-toggler" role="button">
+                            <a class="nav-link toggle" href="{{ url_for('random') }}" id="navbar-toggler" role="button">
                                 Movie Random List
                             </a>
                         </li>
@@ -58,7 +58,7 @@
                 <p class="entry2">"We've got mountains of data, but nowhere near enough computer power to analyze it. Can you help us?"</p>
                 <p class="entry3">.- The Day After Tomorrow</p>
                 <hr>
-                <a href="dashboard.html">
+                <a href="{{ url_for('dash') }}">
                     <button type="button" class="btn btn-primary btn-lg" id="begining">Let's Begin!</button>
                 </a>
             </div>
@@ -66,6 +66,13 @@
     </div>
 
 </body>
-<script src="/static/js/logic.js "></script>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="../static/js/logic.js ">
+    {
+        {
+            index.html
+        }
+    }
+</script>
 
 </html>
