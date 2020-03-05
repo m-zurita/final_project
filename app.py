@@ -4,11 +4,13 @@ from sqlalchemy import create_engine
 import psycopg2
 import pandas as pd
 import numpy as np
+import tablib
+import os
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 
-engine = create_engine('postgresql://postgres:1234@localhost:5432/peliculas_db')
+engine = create_engine('postgresql://postgres:ximepss030311@localhost:5432/peliculas_db')
 
 data = pd.read_csv("Resources/movies.csv")
 pelis = np.asarray(data['Title'])
@@ -18,6 +20,15 @@ directores = np.asarray(data['Director'])
 #pelis = ["The Pianist", "Inception", "Boyhood"]
 #actores = ["Nicolas Cage", "Nick Nolte", "Jason Statham", "Niel patrick Harris"]
 #directores = ["Roman Polanski", "Quentin Tarantino"]
+
+
+@app.route("/table")
+def table():
+    dataset = tablib.Dataset()
+   # with open(os.path.join(os.path.dirname(__file__),'./Resources/movies.csv'), encoding = 'UTF-8') as f:
+    #    dataset.csv = f.read()
+    x = pd.read_csv("./Resources/movies.csv")
+    return x.to_json(force_ascii = False)
 
 @app.route("/")
 def home():
@@ -38,22 +49,25 @@ def dash():
 @app.route("/api/movies/<search>", methods = ["POST"])
 def info(search):
     try:
+        print(search)
         connection = psycopg2.connect(
         database='peliculas_db',
         user='postgres',
         host='localhost',
-        password='1234'
+        password='ximepss030311'
         )
 
         flag = searchInArrays(search)
         query = ""
+        
+        print(flag)
 
         if flag == 1:
-            query = "SELECT * FROM movie_data WHERE Title LIKE '%{search}%'"
+            query = "SELECT * FROM movie_data WHERE Title LIKE \'%"+search+"%\'"
         if flag == 2:
-            query  = "SELECT COUNT(title) AS Movie, AVG(imdbrating) AS imdbR, AVG(Metascore) AS Mscore, to_char(SUM(worldwide), '$999,999,999,999') AS WW, mode() WITHIN GROUP (ORDER BY rated) AS modal_value, mode() WITHIN GROUP (ORDER BY genre) AS genreV, mode() WITHIN GROUP (ORDER BY production) AS prodV, AVG(Runtime) AS RunT FROM movie_data WHERE Director LIKE '%{search}%'"
+            query  = "SELECT COUNT(title) AS Movie, AVG(imdbrating) AS imdbR, AVG(Metascore) AS Mscore, to_char(SUM(worldwide), '$999,999,999,999') AS WW, mode() WITHIN GROUP (ORDER BY rated) AS modal_value, mode() WITHIN GROUP (ORDER BY genre) AS genreV, mode() WITHIN GROUP (ORDER BY production) AS prodV, AVG(Runtime) AS RunT FROM movie_data WHERE Director LIKE \'%"+search+"%\'"
         if flag == 3:
-            query = "SELECT COUNT(title) AS Movie, AVG(imdbrating) AS imdbR, AVG(Metascore) AS Mscore, to_char(SUM(worldwide), '$999,999,999,999') AS WW, mode() WITHIN GROUP (ORDER BY rated) AS modal_value, mode() WITHIN GROUP (ORDER BY genre) AS genreV, mode() WITHIN GROUP (ORDER BY production) AS prodV, AVG(Runtime) AS RunT FROM movie_data WHERE Actors LIKE '%{search}%'"
+            query = "SELECT COUNT(title) AS Movie, AVG(imdbrating) AS imdbR, AVG(Metascore) AS Mscore, to_char(SUM(worldwide), '$999,999,999,999') AS WW, mode() WITHIN GROUP (ORDER BY rated) AS modal_value, mode() WITHIN GROUP (ORDER BY genre) AS genreV, mode() WITHIN GROUP (ORDER BY production) AS prodV, AVG(Runtime) AS RunT FROM movie_data WHERE Actors LIKE \'%"+search+"%\'"
         print(query)
 
         cursor = connection.cursor()

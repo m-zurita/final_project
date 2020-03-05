@@ -220,15 +220,37 @@ function createGraph(itemString, peliculas) {
 //*************************************************************************************************
 //The listener to search Movies, Actor or Directors
 
-d3.csv('../Resources/movies.csv', function(complete) {
-    console.log(complete)
-})
+var pelis = []
+var actores = []
+var directores = []
 
-var pelis = ["The Pianist", "Adrien Brody", "Leonardo DiCaprio", "Inception"];
-var actores = ["Nicolas Cage", "Nick Nolte", "Jason Statham", "Niel patrick Harris"];
-var directores = ["Roman Polanski"];
+/**
+ * Append arrays.
+ */
+appendArrays = async function() {
+    
+    arregloFinal = await d3.json("/table",{
+        method: "GET",
+    }).then(datos => {
+        arregloFinal = []
+        for(var o in datos.Title) {
+            arregloFinal.push(datos.Title[o]);
+        }
 
-function autocomplete(inp, arr) {
+        for(var o in datos.Actors) {
+            arregloFinal.push(datos.Actors[o]);
+        }
+
+        for(var o in datos.Director) {
+            arregloFinal.push(datos.Director[o]);
+        }
+        return arregloFinal; 
+      });   
+    return arregloFinal
+}
+
+async function autocomplete(inp) {
+    arr = await appendArrays()
     /*the autocomplete function takes two arguments,
     the text field element and an array of possible autocompleted values:*/
     var currentFocus;
@@ -328,24 +350,7 @@ function autocomplete(inp, arr) {
     });
 }
 
-/**
- * Append arrays.
- */
-function appendArrays() {
-    var arregloFinal = [];
-    pelis.forEach(function(x, i) {
-        arregloFinal.push(x);
-    });
-    actores.forEach(function(x, i) {
-        arregloFinal.push(x);
-    });
-    directores.forEach(function(x, i) {
-        arregloFinal.push(x);
-    });
-    return arregloFinal;
-}
-
-autocomplete(document.getElementById("myInput"), appendArrays());
+autocomplete(document.getElementById("myInput"));
 
 //******************************************************************************+*************** 
 
@@ -377,13 +382,26 @@ let busqueda = (stringBusqueda) =>
 
         console.log(datos.resultado);
 
-        let selector = d3.selectAll(".miRow").data(datos);
+        d3.selectAll("#d1").each(function(d, i) {
+            d3.select(this).text(datos.resultado[0][0]);
+          });
+          d3.selectAll("#img").each(function(d, i) {
+            d3.select(this).text(datos.resultado[0][3]);
+          });
+          d3.selectAll("#d2").each(function(d, i) {
+            d3.select(this).text(datos.resultado[0][2]);
+          });
+          d3.selectAll("#d3").each(function(d, i) {
+            d3.select(this).text(datos.resultado[0][6]);
+          });
+
+        /*let selector = d3.selectAll(".miRow").data(datos);
 
         selector.enter()
             .append("div").attr("class", "col-3 p-2")
             .append("div").attr("class", "p-1 dashboard")
-            .text(d => d.contenido);
-
+            .text(d => d.resultado);
+        */
     });
 
 d3.select("#myInput").on("change", function() {
