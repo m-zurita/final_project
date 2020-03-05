@@ -27,7 +27,7 @@ def table():
     dataset = tablib.Dataset()
    # with open(os.path.join(os.path.dirname(__file__),'./Resources/movies.csv'), encoding = 'UTF-8') as f:
     #    dataset.csv = f.read()
-    x = pd.read_csv("./Resources/movies.csv")
+    x = pd.read_csv("./Resources/baselimpia.csv")
     return x.to_json(force_ascii = False)
 
 @app.route("/")
