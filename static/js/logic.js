@@ -228,31 +228,31 @@ var directores = []
  * Append arrays.
  */
 appendArrays = async function() {
-    
-    arregloFinal = await d3.json("/table",{
+
+    arregloFinal = await d3.json("/table", {
         method: "GET",
     }).then(datos => {
         arregloFinal = []
-        for(var o in datos.Title) {
+        for (var o in datos.Title) {
             arregloFinal.push(datos.Title[o]);
         }
 
-        for(var o in datos.Actors) {
+        for (var o in datos.Actors) {
             arregloFinal.push(datos.Actors[o]);
         }
 
-        for(var o in datos.Director) {
+        for (var o in datos.Director) {
             arregloFinal.push(datos.Director[o]);
         }
-        return arregloFinal; 
-      });   
+        return arregloFinal;
+    });
     return arregloFinal
 }
 
 async function autocomplete(inp) {
     arr = await appendArrays()
-    /*the autocomplete function takes two arguments,
-    the text field element and an array of possible autocompleted values:*/
+        /*the autocomplete function takes two arguments,
+        the text field element and an array of possible autocompleted values:*/
     var currentFocus;
     /*execute a function when someone writes in the text field:*/
     inp.addEventListener("input", function(e) {
@@ -377,47 +377,45 @@ let busqueda = (stringBusqueda) =>
     }).then(datos => {
 
         console.log(datos.resultado);
-        if(datos.flag=1){
+        if (datos.flag = 1) {
             d3.selectAll("#cards").each(function(d, i) {
                 d3.select(this).html(`<div class="container text-center">
-                <div class="row mx-n5 justify-content-md-center miRow">
-                    <div class="col-12">
+                <div class="row mx-n5 justify-content-md-center miRow ">
+                    <div class="col-4 p-2">
                         <div class="p-0" id="d9">
-                        <img src="${datos.resultado[0][9]}">
+                        <img src="${datos.resultado[0][9]}" style="width: 300px; height: 430px;">
                         </div>
                     </div>
+                    <div class="col-8 p-2">
+                        <div class="p-1 dashboard" id="d8" style="width: 900px; height: 430px;"><b> Plot </b> <br><br> <p style="font-size: 30px;">${datos.resultado[0][8]}</p></div>
+                    </div>
                 </div>
                 <div class="row mx-n5 justify-content-md-center miRow">
                     <div class="col-3 p-2">
-                        <div class="p-1 dashboard" id="d0"><b> Pelicula </b> <br><br> <p style="font-size: 30px;">${datos.resultado[0][0]}</p></div>
+                        <div class="p-1 dashboard" id="d0" style="width: 280px; height: 250px;"><b> Pelicula </b> <br><br> <p style="font-size: 30px;">${datos.resultado[0][0]}</p></div>
                     </div>
                     <div class="col-3 p-2">
-                        <div class="p-1 dashboard" id="d1"><b> Director </b> <br><br> <p style="font-size: 30px;">${datos.resultado[0][6]}</p></div>
+                        <div class="p-1 dashboard" id="d1" style="width: 280px; height: 250px;"><b> Director </b> <br><br> <p style="font-size: 30px;">${datos.resultado[0][6]}</p></div>
                     </div>
                     <div class="col-3 p-2">
-                        <div class="p-1 dashboard" id="d2"><b> Cast </b> <br><br> <p style="font-size: 30px;">${datos.resultado[0][3]}</p></div>
+                        <div class="p-1 dashboard" id="d2" style="width: 280px; height: 250px;"><b> Cast </b> <br><br> <p style="font-size: 25px;">${datos.resultado[0][3]}</p></div>
                     </div>
                     <div class="col-3 p-2">
-                        <div class="p-1 dashboard" id="d3 "><b> Year </b> <br><br> <p style="font-size: 30px;">${datos.resultado[0][2]}</p></div>
+                        <div class="p-1 dashboard" id="d3" style="width: 280px; height: 250px;"><b> Year </b> <br><br> <p style="font-size: 30px;">${datos.resultado[0][2]}</p></div>
                     </div>
                 </div>
                 <div class="row mx-n5 justify-content-md-center miRow ">
                     <div class="col-3 p-2">
-                        <div class="p-1 dashboard" id="d4"><b> Awards </b> <br><br> <p style="font-size: 30px;">${datos.resultado[0][4]}</p></div>
+                        <div class="p-1 dashboard" id="d4" style="width: 280px; height: 250px;"><b> Awards </b> <br><br> <p style="font-size: 30px;">${datos.resultado[0][4]}</p></div>
                     </div>
                     <div class="col-3 p-2">
-                        <div class="p-1 dashboard" id="d5"><b> Country </b> <br><br> <p style="font-size: 30px;">${datos.resultado[0][5]}</p></div>
+                        <div class="p-1 dashboard" id="d5" style="width: 280px; height: 250px;"><b> Country </b> <br><br> <p style="font-size: 30px;">${datos.resultado[0][5]}</p></div>
                     </div>
                     <div class="col-3 p-2">
-                        <div class="p-1 dashboard" id="d6"><b> Box Office </b> <br><br> <p style="font-size: 30px;"> $ ${datos.resultado[0][1]}</p></div>
+                        <div class="p-1 dashboard" id="d6" style="width: 280px; height: 250px;"><b> Box Office </b> <br><br> <p style="font-size: 30px;"> $ ${datos.resultado[0][1]}</p></div>
                     </div>
                     <div class="col-3 p-2">
-                        <div class="p-1 dashboard" id="d7"><b> MetaScore </b> <br><br> <p style="font-size: 30px;">${datos.resultado[0][7]}</p></div>
-                    </div>
-                </div>
-                <div class="row mx-n5 justify-content-md-center miRow ">
-                    <div class="col-9 p-2">
-                        <div class="p-1 dashboard" id="d8"><b> Plot </b> <br><br> <p style="font-size: 30px;">${datos.resultado[0][8]}</p></div>
+                        <div class="p-1 dashboard" id="d7" style="width: 280px; height: 250px;"><b> MetaScore </b> <br><br> <p style="font-size: 30px;">${datos.resultado[0][7]}</p></div>
                     </div>
                 </div>
             </div>`);
