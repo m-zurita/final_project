@@ -361,10 +361,6 @@ datos = ["uno", "dos", "tres"];
 
 let selector = d3.selectAll(".miRow").data(datos);
 
-selector.enter()
-    .append("div").attr("class", "col-3 p-2")
-    .append("div").attr("class", "p-1 dashboard")
-    .text(d => d.contenido);
 //******************************************************************************+***************
 
 //**********************************************************************************************
@@ -381,27 +377,52 @@ let busqueda = (stringBusqueda) =>
     }).then(datos => {
 
         console.log(datos.resultado);
-
-        d3.selectAll("#d1").each(function(d, i) {
-            d3.select(this).text(datos.resultado[0][0]);
-          });
-          d3.selectAll("#img").each(function(d, i) {
-            d3.select(this).text(datos.resultado[0][3]);
-          });
-          d3.selectAll("#d2").each(function(d, i) {
-            d3.select(this).text(datos.resultado[0][2]);
-          });
-          d3.selectAll("#d3").each(function(d, i) {
-            d3.select(this).text(datos.resultado[0][6]);
-          });
-
-        /*let selector = d3.selectAll(".miRow").data(datos);
-
-        selector.enter()
-            .append("div").attr("class", "col-3 p-2")
-            .append("div").attr("class", "p-1 dashboard")
-            .text(d => d.resultado);
-        */
+        if(datos.flag=1){
+            d3.selectAll("#cards").each(function(d, i) {
+                d3.select(this).html(`<div class="container text-center">
+                <div class="row mx-n5 justify-content-md-center miRow">
+                    <div class="col-12">
+                        <div class="p-0" id="d9">
+                        <img src="${datos.resultado[0][9]}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mx-n5 justify-content-md-center miRow">
+                    <div class="col-3 p-2">
+                        <div class="p-1 dashboard" id="d0"><b> Pelicula </b> <br><br> <p style="font-size: 30px;">${datos.resultado[0][0]}</p></div>
+                    </div>
+                    <div class="col-3 p-2">
+                        <div class="p-1 dashboard" id="d1"><b> Director </b> <br><br> <p style="font-size: 30px;">${datos.resultado[0][6]}</p></div>
+                    </div>
+                    <div class="col-3 p-2">
+                        <div class="p-1 dashboard" id="d2"><b> Cast </b> <br><br> <p style="font-size: 30px;">${datos.resultado[0][3]}</p></div>
+                    </div>
+                    <div class="col-3 p-2">
+                        <div class="p-1 dashboard" id="d3 "><b> Year </b> <br><br> <p style="font-size: 30px;">${datos.resultado[0][2]}</p></div>
+                    </div>
+                </div>
+                <div class="row mx-n5 justify-content-md-center miRow ">
+                    <div class="col-3 p-2">
+                        <div class="p-1 dashboard" id="d4"><b> Awards </b> <br><br> <p style="font-size: 30px;">${datos.resultado[0][4]}</p></div>
+                    </div>
+                    <div class="col-3 p-2">
+                        <div class="p-1 dashboard" id="d5"><b> Country </b> <br><br> <p style="font-size: 30px;">${datos.resultado[0][5]}</p></div>
+                    </div>
+                    <div class="col-3 p-2">
+                        <div class="p-1 dashboard" id="d6"><b> Box Office </b> <br><br> <p style="font-size: 30px;"> $ ${datos.resultado[0][1]}</p></div>
+                    </div>
+                    <div class="col-3 p-2">
+                        <div class="p-1 dashboard" id="d7"><b> MetaScore </b> <br><br> <p style="font-size: 30px;">${datos.resultado[0][7]}</p></div>
+                    </div>
+                </div>
+                <div class="row mx-n5 justify-content-md-center miRow ">
+                    <div class="col-9 p-2">
+                        <div class="p-1 dashboard" id="d8"><b> Plot </b> <br><br> <p style="font-size: 30px;">${datos.resultado[0][8]}</p></div>
+                    </div>
+                </div>
+            </div>`);
+            });
+        };
     });
 
 d3.select("#myInput").on("change", function() {

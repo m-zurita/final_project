@@ -24,7 +24,7 @@ directores = np.asarray(data['Director'])
 
 @app.route("/table")
 def table():
-    dataset = tablib.Dataset()
+    #dataset = tablib.Dataset()
    # with open(os.path.join(os.path.dirname(__file__),'./Resources/movies.csv'), encoding = 'UTF-8') as f:
     #    dataset.csv = f.read()
     x = pd.read_csv("./Resources/baselimpia.csv")
@@ -90,7 +90,8 @@ def info(search):
         #return render_template("dashboard.html", pelis = pelis)
         #return render_template("dashboard.html", resultado=resultado)
     return jsonify({
-        "resultado": resultado
+        "resultado": resultado,
+        "flag": flag
     })
 
 #@app.route("/api/list/<genres>")
