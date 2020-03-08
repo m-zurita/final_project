@@ -10,16 +10,12 @@ import os
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 
-engine = create_engine('postgresql://postgres:1234@localhost:5432/peliculas_db')
+engine = create_engine('postgresql://postgres:ximepss030311@localhost:5432/peliculas_db')
 
-data = pd.read_csv("Resources/movies.csv")
+data = pd.read_csv("./Resources/ActoresDirectoresPelis.csv")
 pelis = np.asarray(data['Title'])
 actores = np.asarray(data['Actors'])
 directores = np.asarray(data['Director'])
-
-#pelis = ["The Pianist", "Inception", "Boyhood"]
-#actores = ["Nicolas Cage", "Nick Nolte", "Jason Statham", "Niel patrick Harris"]
-#directores = ["Roman Polanski", "Quentin Tarantino"]
 
 
 @app.route("/table")
@@ -27,7 +23,7 @@ def table():
     #dataset = tablib.Dataset()
    # with open(os.path.join(os.path.dirname(__file__),'./Resources/movies.csv'), encoding = 'UTF-8') as f:
     #    dataset.csv = f.read()
-    x = pd.read_csv("./Resources/baselimpia.csv")
+    x = pd.read_csv("./Resources/ActoresDirectoresPelis.csv")
     return x.to_json(force_ascii = False)
 
 @app.route("/")
@@ -54,7 +50,7 @@ def info(search):
         database='peliculas_db',
         user='postgres',
         host='localhost',
-        password='1234'
+        password='ximepss030311'
         )
 
         flag = searchInArrays(search)

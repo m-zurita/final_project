@@ -383,7 +383,7 @@ let busqueda = (stringBusqueda) =>
                 <div class="row mx-n5 justify-content-md-center miRow ">
                     <div class="col-4 p-2">
                         <div class="p-0" id="d9">
-                        <img src="${datos.resultado[0][9]}" style="width: 300px; height: 430px;">
+                        <img src="${datos.resultado[0][9]}" style="width: 300px; height: 430px;" id="img0">
                         </div>
                     </div>
                     <div class="col-8 p-2">
@@ -420,6 +420,12 @@ let busqueda = (stringBusqueda) =>
                 </div>
             </div>`);
             });
+        }else if(datos.flag = 2){
+            console.log("holi");
+        }else if(datos.flag =3){
+            console.log("holi");
+        }else{
+            console.log("nada");
         };
     });
 

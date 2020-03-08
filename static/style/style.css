@@ -193,3 +193,8 @@ body {
     border-left: 5px solid #F4D03F;
     vertical-align: middle;
 }
+
+#img0 {
+    box-shadow: 3px 3px 3px #888888;
+    border-radius: 20px;
+}
